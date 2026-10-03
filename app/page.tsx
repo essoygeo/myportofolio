@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { Locale } from "@/data/portfolio";
+import type { Identity, Locale } from "@/data/portfolio";
 import { portfolioData } from "@/data/portfolio";
 import { Navbar } from "@/components/site/navbar";
 import { Hero } from "@/components/site/hero";
@@ -31,34 +31,32 @@ export default function HomePage() {
 
   const content = portfolioData.locales[locale];
 
+  const identity: Identity = {
+    ...portfolioData.identity,
+    role: content.role,
+    tagline: content.tagline,
+    availability: content.availability,
+  };
+
   return (
     <>
       <Navbar
-        brand={portfolioData.identity.name}
+        brand={identity.name}
         nav={content.nav}
         locale={locale}
         onLocaleChange={setLocale}
       />
       <main>
-        <Hero data={content.hero} identity={portfolioData.identity} />
+        <Hero data={content.hero} identity={identity} />
         <About data={content.about} />
         <Projects projects={content.projects} copy={content.projectsSection} locale={locale} />
         <Skills skills={content.skills} copy={content.skillsSection} />
         <Testimonials testimonials={content.testimonials} copy={content.testimonialsSection} />
-        <Contact
-          data={content.contact}
-          socials={portfolioData.socials}
-          identity={portfolioData.identity}
-          locale={locale}
-        />
+        <Contact data={content.contact} socials={portfolioData.socials} identity={identity} locale={locale} />
       </main>
       <Footer data={content.footer} />
       <FloatingWhatsApp footer={content.footer} identity={portfolioData.identity} />
-      <MascotMe
-        locale={locale}
-        name={portfolioData.identity.name}
-        role={portfolioData.identity.role}
-      />
+      <MascotMe locale={locale} name={identity.name} role={identity.role} />
     </>
   );
 }

@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
-import type { HeroContent, PortfolioData } from "@/data/portfolio";
+import type { HeroContent, Identity } from "@/data/portfolio";
 import { cn } from "@/lib/cn";
 
 type HeroProps = {
   data: HeroContent;
-  identity: PortfolioData["identity"];
+  identity: Identity;
 };
 
 export function Hero({ data, identity }: HeroProps) {

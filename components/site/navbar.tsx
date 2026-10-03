@@ -103,7 +103,7 @@ export function Navbar({ brand, nav, locale, onLocaleChange }: NavbarProps) {
           type="button"
           onClick={() => setOpen((value) => !value)}
           className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:bg-white/10 md:hidden"
-          aria-label="Open menu"
+          aria-label={locale === "fr" ? "Ouvrir le menu" : "Open menu"}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>

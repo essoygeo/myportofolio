@@ -3,13 +3,13 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Github, Globe, Linkedin, Mail, MapPin, Send, Twitter } from "lucide-react";
-import type { ContactContent, SocialLink, PortfolioData, Locale } from "@/data/portfolio";
+import type { ContactContent, SocialLink, Identity, Locale } from "@/data/portfolio";
 import { SectionHeading } from "@/components/site/section-heading";
 
 type ContactProps = {
   data: ContactContent;
   socials: SocialLink[];
-  identity: PortfolioData["identity"];
+  identity: Identity;
   locale: Locale;
 };
 

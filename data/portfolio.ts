@@ -137,6 +137,9 @@ export type FooterContent = {
 };
 
 export type LocaleContent = {
+  role: string;
+  tagline: string;
+  availability: string;
   nav: NavItem[];
   hero: HeroContent;
   about: AboutContent;
@@ -150,17 +153,18 @@ export type LocaleContent = {
   footer: FooterContent;
 };
 
+export type Identity = {
+  name: string;
+  role: string;
+  tagline: string;
+  email: string;
+  whatsappNumber: string;
+  location: string;
+  availability: string;
+};
+
 export type PortfolioData = {
-  identity: {
-    name: string;
-    role: string;
-    tagline: string;
-    email: string;
-    whatsappNumber: string;
-    location: string;
-    availability: string;
-    photo: PhotoFrame;
-  };
+  identity: Omit<Identity, "role" | "tagline" | "availability">;
   locales: Record<Locale, LocaleContent>;
   socials: SocialLink[];
 };
@@ -168,22 +172,16 @@ export type PortfolioData = {
 export const portfolioData: PortfolioData = {
   identity: {
     name: "Baliki Essohanam",
-    role: "Développeur Full Stack",
-    tagline:
-      "Développeur web & mobile : je transforme les idées en applications robustes avec Laravel, Flutter, Spring Boot et Next.js, de l'idée jusqu'au déploiement.",
     email: "jeanessoy@gmail.com",
     whatsappNumber: "22891450538",
     location: "Lomé, Togo",
-    availability: "Ouvert aux stages, projets freelance et collaborations",
-    photo: {
-      initials: "BE",
-      alt: "Photo de Baliki Essohanam, développeur full stack",
-      caption: "Baliki Essohanam — Développeur Full Stack basé à Lomé.",
-      src: "/profile.jpeg",
-    },
   },
   locales: {
     fr: {
+      role: "Développeur Full Stack",
+      tagline:
+        "Développeur web & mobile : je transforme les idées en applications robustes avec Laravel, Flutter, Spring Boot et Next.js, de l'idée jusqu'au déploiement.",
+      availability: "Ouvert aux stages, projets freelance et collaborations",
       nav: [
         { label: "Accueil", href: "#home" },
         { label: "À propos", href: "#about" },
@@ -403,6 +401,10 @@ export const portfolioData: PortfolioData = {
       },
     },
     en: {
+      role: "Full Stack Developer",
+      tagline:
+        "Web & mobile developer: I turn ideas into robust applications with Laravel, Flutter, Spring Boot and Next.js, from the first draft to deployment.",
+      availability: "Open to internships, freelance projects and collaborations",
       nav: [
         { label: "Home", href: "#home" },
         { label: "About", href: "#about" },
